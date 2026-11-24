@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel | Estacionamiento</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🚗 Estacionamiento inteligente</h1>
+    <a class="logout" href="{{ url_for('logout') }}">Cerrar sesión</a>
+  </header>
+  <main class="container">
+    <p class="muted">Sesión iniciada como {{ session.usuario }}</p>
+    <section class="cards">
+      <article class="card">
+        <h2>Estacionamiento</h2>
+        <p id="parking" class="state">Consultando...</p>
+        <p id="parkingMessage" class="muted">Capacidad: 1 automóvil</p>
+      </article>
+      <article class="card">
+        <h2>Barrera</h2>
+        <p id="barrier" class="state">Consultando...</p>
+        <p id="distance" class="muted">Distancia: -- cm</p>
+      </article>
+      <article class="card">
+        <h2>Arduino</h2>
+        <p id="connection" class="state">Comprobando...</p>
+        <p id="mode" class="muted">Modo: --</p>
+      </article>
+    </section>
+    <section class="card controls">
+      <h2>Control de la barrera</h2>
+      <p class="muted">Usa el control manual solo cuando sea seguro mover la barrera.</p>
+      <div class="buttons">
+        <button class="success" onclick="sendCommand('OPEN')">Abrir barrera</button>
+        <button class="danger" onclick="sendCommand('CLOSE')">Cerrar barrera</button>
+        <button class="primary" onclick="sendCommand('AUTO')">Activar automático</button>
+        <button class="warning" onclick="registerExit()">Registrar salida</button>
+      </div>
+      <p id="feedback" role="status" class="feedback"></p>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

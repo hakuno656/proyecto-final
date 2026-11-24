@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acceso | Estacionamiento</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <div class="car-icon">🚗</div>
+    <h1>Estacionamiento inteligente</h1>
+    <p class="muted">Inicia sesión para controlar la barrera</p>
+    <form method="POST">
+      <label for="usuario">Usuario</label>
+      <input id="usuario" name="usuario" type="text" autocomplete="username" required>
+      <label for="contrasena">Contraseña</label>
+      <input id="contrasena" name="contrasena" type="password" autocomplete="current-password" required>
+      <button type="submit" class="primary full">Iniciar sesión</button>
+    </form>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  </main>
+</body>
+</html>
